@@ -16,11 +16,11 @@ const app = express();
 const PORT = ENV.PORT || 3000;
 
 app.use(express.json()); //req.body
+app.use(cors({
+    origin: ENV.CLIENT_URL, credentials:true
+}));
 app.use(cookieParser());
 
-app.use(cors({
-    origin: 'http://localhost:5173'
-}));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
