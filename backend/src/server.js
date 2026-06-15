@@ -15,7 +15,8 @@ const app = express();
 
 const PORT = ENV.PORT || 3000;
 
-app.use(express.json()); //req.body
+//limit: 5mb {got payloadtoohigh error while sending image in chat}
+app.use(express.json({ limit: "5mb" })); //req.bod
 app.use(cors({
     origin: ENV.CLIENT_URL, credentials:true
 }));
